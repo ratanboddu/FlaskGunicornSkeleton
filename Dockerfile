@@ -23,4 +23,4 @@ WORKDIR /gunicorn-skeleton
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # run gunicorn-skeleton
-CMD ["mosaic-ai", "gunicorn"]
+CMD ["gunicorn", "--config", "configs/gunicorn.py", "gunicornskeleton"]
