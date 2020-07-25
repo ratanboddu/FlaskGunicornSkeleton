@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flask-application
+  labels:
+    app: flask-application
+    component: flask-application
+data:
+  app-config.ini: |-
+    [flask]
+    base_url = /boddulabs/api
+
+    [log]
+    file_name = logs/flask-gunicorn-skeleton.log
+    file_size = 20000000
+    backup_count = 10
+
+    [gunicorn]
+    config_file = configs/gunicorn.py

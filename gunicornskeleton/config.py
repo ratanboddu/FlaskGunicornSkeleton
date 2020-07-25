@@ -5,7 +5,7 @@ import os
 
 # config file
 config_file = os.getenv(
-    "CONFIGMAP_SETTINGS", "/usr/local/opt/gunicorn-skeleton/configs/local.ini"
+    "CONFIG_SETTINGS", "/usr/local/opt/gunicorn-skeleton/configs/local.ini"
 )
 
 

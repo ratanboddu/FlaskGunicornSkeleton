@@ -16,7 +16,7 @@ install: pip
 	pre-commit install
 
 run:
-	CONFIGMAP_SETTINGS=$(PWD)/configs/local.ini FLASK_APP=gunicornskeleton \
+	CONFIG_SETTINGS=$(PWD)/configs/local.ini FLASK_APP=gunicornskeleton \
 	FLASK_DEBUG=0 \
 	flask run
 

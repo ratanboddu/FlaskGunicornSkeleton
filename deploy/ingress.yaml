@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: flask-application
+  annotations:
+    'kubernetes.io/ingress.class': 'nginx'
+spec:
+ rules:
+ - host: boddulabs.com
+   http:
+     paths:
+     - path: /boddulabs/api
+       backend:
+         serviceName: flask-application
+         servicePort: 5000

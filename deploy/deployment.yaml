@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-application
+  labels:
+    app: flask-application
+    component: flask-application
+spec:
+  selector:
+    matchLabels:
+      app: flask-application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-application
+        component: flask-application
+    spec:
+      volumes:
+      - name: app-config
+        configMap:
+          name: flask-application
+          items:
+          - key: app-config.ini
+            path: app-config.ini
+      containers:
+      - env:
+        - name: CONFIG_SETTINGS
+          value: /gunicorn-skeleton/configs/app-config.ini
+        image: ratanboddu/flask-gunicorn-skeleton-app:1.0.0
+        imagePullPolicy: IfNotPresent
+        name: flask-application
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "1000Mi"
+            cpu: "1"
+        volumeMounts:
+          - name: app-config
+            mountPath: /gunicorn-skeleton/configs/app-config.ini
+            subPath: app-config.ini
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /boddulabs/api/v1/ping
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /boddulabs/api/v1/ping
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 15
