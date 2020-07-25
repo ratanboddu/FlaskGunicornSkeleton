@@ -1,0 +1,20 @@
+Sample API to check POST request
+---
+tags:
+  - SampleRequests
+responses:
+  "201":
+    description: OK
+definitions:
+  CreateDataRequest:
+    type: object
+    required:
+      - tag
+    properties:
+      name:
+        type: string
+      age:
+        type: string
+      phone_number:
+        type: string
+

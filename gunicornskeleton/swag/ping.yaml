@@ -1,0 +1,19 @@
+API to check the health of the service
+---
+tags:
+  - Ping
+responses:
+  "201":
+    description: OK
+definitions:
+  CreateDataRequest:
+    type: object
+    required:
+      - tag
+    properties:
+      name:
+        type: string
+      age:
+        type: string
+      phone_number:
+        type: string
