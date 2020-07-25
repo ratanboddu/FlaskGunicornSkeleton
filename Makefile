@@ -20,7 +20,6 @@ run:
 	FLASK_DEBUG=0 \
 	flask run
 
-
 docker:
-	docker build -t  .
-	docker push
+	docker build -t  myrepo/myapplication .
+	docker push myrepo/myapplication
